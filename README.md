@@ -63,6 +63,6 @@ To use ActivityTracker, you need to have a web server with PHP and MySQL install
 If you're interested in contributing to the development of ActivityTracker, you can do so by submitting a pull request with your changes. All contributions are welcome and appreciated.
 
 ## License
-ActivityTracker is licensed under the [MIT License](LICENSE). Feel free to use and modify the code as you see fit.
+ActivityTracker is licensed under the [GNU GPLv3](https://choosealicense.com/licenses/gpl-3.0/). Feel free to use and modify the code as you see fit.
 
 

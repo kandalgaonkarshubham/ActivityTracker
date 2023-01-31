@@ -22,7 +22,7 @@ ActivityTracker is built with the following technologies:
 - JavaScript
 - JQuery
 - Ajax
-- MySQLi
+- MySQL
 
 ## Features
 ActivityTracker offers several features along with `Light/dark mode toggle` and `Cross platform compatibility` to help you monitor your computer usage:

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stopwatch</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/mode.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/wakelock.css">
+    <link rel="stylesheet" href="css/preloader.css">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+    
+    <script src="https://kit.fontawesome.com/cea1d3b9d3.js" crossorigin="anonymous"></script>
+    
+    <style>
+        footer .containerr form input {
+            width: 100%;
+        }
+    </style>
+
+</head>
+
+<body id="stop-scrolling">
+
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><i>ActivityTracker</i></a>
+
+                <label for="burger" class="burger navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" onchange="changeClass()" >
+                    <input id="burger" type="checkbox">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#">Stopwatch</a>
+                        </li>
+                        <li class="nav-item">
+                           <a class="nav-link" href="cal/index.php">Calendar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="calc.html">Calculator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="todo/index.php">Taskify</a>
+                        </li>
+                    </ul>
+                        <label class="switch">
+                            <input id="darkSwitch" type="checkbox" onclick="darkLight()">
+                            <span class="slider" onclick="darkLight()"></span>
+                        </label>
+                </div>
+            </div>
+        </nav>
+
+        <div id="success"></div>
+        
+        <div class="d-none">
+            <div id="storedvalue"></div>
+            <div id="modifiedtime"></div>
+        </div>
+    </header>
+
+    <main>
+        
+
+
+        <div id="confirm" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Confirm Reset?</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Click Confirm to Reset the Stopwatch</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button onclick="reset()" type="button" data-bs-dismiss="modal" class="btn btn-danger">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="store" class="modal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Store Data in Calendar</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Click Confirm to Store Today's data in the Calendar</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button onclick="checkForm()" type="button" data-bs-dismiss="modal" class="btn btn-primary">Confirm</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="jumotron d-flex align-items-center min-vh-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                        <div class="wrapper">
+                            <div class="time">
+                                <span id="hour" class="hour">00</span>
+                                <span class="colon">:</span>
+                                <span id="minute" class="minute">00</span>
+                                <span class="colon">:</span>
+                                <span id="second" class="second">00</span>
+                                <span class="colon ms-colon">:</span>
+                                <span id="millisecond" class="millisecond">00</span>
+                            </div>
+
+                            <div id="lap" class="lap-container col-xs-12 col-sm-12 col-md-12 col-lg-12 mt-3">
+                                <div class="accordion accordion-flush" id="accordionFlush">
+                                    <div class="accordion-item">
+                                        <h2 class="accordion-header" id="flush-headingOne">
+                                            <button class="accordion-button collapsed d-none" type="button" data-bs-toggle="collapse"
+                                                data-bs-target="#flush-collapseOne">
+                                            </button>
+                                        </h2>
+                                        <div id="flush-collapseOne" class="accordion-collapse collapse bg-transparent" aria-labelledby="flush-headingOne"
+                                            data-bs-parent="#accordionFlush">
+                                            <div class="accordion-body bg-transparent"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="buttons">
+                                <button class="start">Start</button>
+                                <button class="stop">Stop</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#confirm" class="reset">Reset</button>
+                            </div>
+                            <div class="buttons">
+                                <button class="lapp" title="Show/Hide Today's Logs">Laps</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#store" class="eod">Store</button>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- <i id="bulb" class="fa-solid fa-lightbulb" data-toggle="tooltip" ></i> -->
+        <i id="bulb" class="fa-solid fa-lightbulb" data-toggle="tooltip" data-placement="top" ondblclick="debugWkLck()"></i><br>
+
+    </main>
+
+    <footer id="footer" class="d-none">
+        <hr>
+        <div class="container">
+            <form action="form2.php" method="post">
+                <fieldset>
+                    <legend>Debug Form</legend>
+                    <input id="inpdate" class="form-control mb-3" type="text" name="date" placeholder="date">
+                    <input id="inpname" class="form-control mb-3" type="text" name="name" placeholder="name">
+                    <input id="inpclass" class="form-control mb-3" type="text" name="class" placeholder="class">
+                    <input id="inpcolor" class="form-control mb-3" type="text" name="color" placeholder="color">
+                    <input id="inplogs" class="form-control mb-3" type="text" name="logs" placeholder="logs">
+                    <input type="submit" class="btn btn-primary mb-3" name="submit" id="submit">
+                </fieldset>
+            </form>
+        </div>
+<hr>
+        <div id="wakelock-container" class="container ">
+            <h1 class="text-center">Wakelock Api</h1>
+            <p>The button below changes depending on whether wake lock is active or not.</p>
+            
+            <button id="wakebtn" data-status="off" class="btn btn-dark">Turn Wake Lock ON</button>
+            
+            <section id="status" >
+                <h2>Wake Lock Status</h2>
+                <p></p>
+            </section>
+            
+            <p>Wake lock will automatically release if if the tab becomes inactive.</p>
+            <p>To re-activate the wake lock automatically when the tab becomes active again, check this box: 
+                <!-- <input type="checkbox" id="reaquire" /> -->
+
+                <input id="reaquire" type="checkbox">
+                <label class="btn-lock" for="reaquire">
+                    <svg width="36" height="40" viewBox="0 0 36 40">
+                    <path class="lockb"
+                        d="M27 27C27 34.1797 21.1797 40 14 40C6.8203 40 1 34.1797 1 27C1 19.8203 6.8203 14 14 14C21.1797 14 27 19.8203 27 27ZM15.6298 26.5191C16.4544 25.9845 17 25.056 17 24C17 22.3431 15.6569 21 14 21C12.3431 21 11 22.3431 11 24C11 25.056 11.5456 25.9845 12.3702 26.5191L11 32H17L15.6298 26.5191Z">
+                    </path>
+                    <path class="lock" d="M6 21V10C6 5.58172 9.58172 2 14 2V2C18.4183 2 22 5.58172 22 10V21"></path>
+                    <path class="bling" d="M29 20L31 22"></path>
+                    <path class="bling" d="M31.5 15H34.5"></path>
+                    <path class="bling" d="M29 10L31 8"></path>
+                    </svg>
+                </label>
+
+            </p>
+        </div>
+
+    </footer>
+
+
+    <script src="js/HackTimer/HackTimer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="js/dark-mode-switch.js"></script>
+    <script src="js/ajax-main.js"></script>
+    <script src="js/wakelock.js"></script>
+    <script src="js/moment.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/preloader.js"></script>
+
+</body>
+
+</html>

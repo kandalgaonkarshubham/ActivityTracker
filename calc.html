@@ -1,0 +1,166 @@
+<!Doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Rupees/KWH Calculator</title>
+
+    <link rel="stylesheet" href="css/dark-mode.css">
+    <link rel="stylesheet" href="css/preloader.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/calc.css">
+    <link rel="stylesheet" href="css/mode.css">
+
+    <script src="https://kit.fontawesome.com/cea1d3b9d3.js" crossorigin="anonymous"></script>
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+    <link rel="manifest" href="favicon/site.webmanifest">
+
+
+</head>
+
+<body id="stop-scrolling">
+
+<div id="preloader">
+    <div class="loader"></div>
+</div>
+
+    <header>
+        <nav id="navbar" class="navbar navbar-expand-lg bg-light navbar-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#"><i>ActivityTracker</i></a>
+                <label for="burger" class="burger navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+                    onchange="changeClass()">
+                    <input id="burger" type="checkbox">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </label>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="index.html">Stopwatch</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cal/index.php">Calendar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="#">Calculator</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="todo/index.php">Taskify</a>
+                        </li>
+                    </ul>
+
+                    <label class="switch">
+                        <input id="darkSwitch" type="checkbox" onclick="darkLight()">
+                        <span class="slider" onclick="darkLight()"></span>
+                    </label>
+
+                </div>
+            </div>
+        </nav>
+
+    </header>
+
+    <main>
+        <div class="container-fluid">
+
+            <br>
+            <div class="row">
+                <div class="col col-lg-5 col-sm-12 col-12 customValues">
+                    <p class="rowHeading">Custom Value For <b>WATTS</b></p>
+
+                    <div class="input-group mb-3">
+                        <span class="input-group-text"><b>W</b></span>
+                        <input id="wattInput" onmouseout="customWatt()" type="number" class="form-control" placeholder="14.01" >
+                    </div>
+                    
+                </div>
+
+                <div class="col col-lg-1 .d-none .d-sm-none customValues"></div>
+
+                <div class="col col-lg-5 col-sm-12 col-12 customValues">
+
+                    <p class="rowHeading">Set Custom <b>Date</b></p>
+
+                    <div class="input-group flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping" data-date-format="yyyy-mm-dd">
+                            <b><i class="bi bi-calendar-plus"></i></b>
+                        </span>
+                        <input id="date-label" type="text" placeholder="Custom Date" class="form-control" readonly>
+
+                    </div>
+
+                </div>
+
+
+                <div class="col col-12">
+
+               <form id="range-form" method="POST">
+                <label for="customRange" class="form-label">Fetch Data of Last <output name="amount" id="amount" for="customRange">0</output> days</label>
+                <input type="range" class="form-range" min="0" max="30" name="customRange" id="customRange" value="0" oninput="amount.value=customRange.value">
+                <div class="d-grid gap-2">
+                    <input id="display" class="btn btn-primary" type="submit" onclick="" value="Display">
+                </div>
+               </form>
+
+               </div>
+            </div>
+            
+            <hr>
+
+            <form id="display-form">
+
+                <div id="headerRow" class="row d-none">
+                    <div class="col"><p class="text-center headertext">Date</p></div>
+                    <div class="col"><p class="text-center headertext">Time</p></div>
+                    <div class="col"><p class="text-center headertext">KWH/Units</p></div>
+                </div>
+
+                <div id="formDiv" class="mb-3"></div>
+
+                <div id="buttonRow" class="d-grid gap-2 d-none">
+                    <button id="addition" class="btn btn-primary" type="button">Calculate</button><hr>
+                </div>
+                
+            </form>
+
+            <div id="price_container" class="price d-none">
+                <div class="input-group mb-3 pcon">
+                    <span class="input-group-text">₹</span>
+                    <span id="price_output" class="input-group-text">0</span>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer></footer>
+
+    <script src="js/dark-mode-switch.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
+    <script src="js/ajax-calc.js"></script>
+    <script src="js/calc.js"></script>
+    <script src="js/preloader.js"></script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,211 @@
+/*!
+ * Dark Mode Switch v1.0.1 (https://github.com/coliff/dark-mode-switch)
+ * Copyright 2021 C.Oliff
+ * Licensed under MIT (https://github.com/coliff/dark-mode-switch/blob/main/LICENSE)
+ */
+
+:root {
+
+  --primary-color: #7D2Ae8;
+  --secondary-color: #f8f9fb;
+  --tertiary-color: #212429;
+}
+
+/* MAIN PAGE */
+
+*{
+  transition: 0.3s;
+}
+
+.custom-border{
+  border-bottom: 1px solid hsl(218, 11%, 20%);
+}
+
+
+[data-theme="dark"] {
+  background-color: var(--tertiary-color) !important;
+  color: var(--secondary-color);
+}
+
+[data-theme="dark"] .wrapper .time {
+  background: var(--tertiary-color) !important;
+  box-shadow: 10px 10px 20px hsla(0, 0%, 100%, 0.09) !important;
+}
+
+[data-theme="dark"] .wrapper .time span {
+  color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .buttons button {
+  background: var(--tertiary-color) !important;
+  color: var(--primary-color) !important;
+  box-shadow: 10px 10px 20px hsla(0, 0%, 100%, 0.09) !important;
+}
+
+[data-theme="dark"] button:disabled{
+  background: hsla(218, 11%, 15%,0.5) !important;
+  color: hsla(266, 81%, 54%, 0.5) !important;
+}
+[data-theme="dark"] button[disabled] {
+  background: hsla(218, 11%, 15%, 0.5) !important;
+  color: hsla(266, 81%, 54%, 0.3) !important;
+}
+
+[data-theme="dark"] .time span.ms-colon{
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .time span.millisecond {
+  color: var(--primary-color) !important;
+}
+
+
+[data-theme="dark"] .lap {
+  background: var(--tertiary-color) !important;
+  box-shadow: 10px 10px 20px hsla(0, 0%, 100%, 0.09) !important;
+}
+
+[data-theme="dark"] .lap span {
+  color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .lap span.result {
+  color: var(--primary-color) !important;
+}
+
+[data-theme="dark"] .lap span.ms-colon{
+  color: var(--primary-color) !important;
+}
+[data-theme="dark"] .accordion-collapse{
+  background-color: var(--tertiary-color) !important;
+}
+[data-theme="dark"] .accordion-item .accordion-collapse {
+  background-color: var(--tertiary-color) !important;
+  border-bottom-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+}
+
+/* CALENDAR PAGE */
+
+[data-theme="dark"] .gc-calendar {
+  background-color: var(--tertiary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header {
+  background-color: var(--tertiary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header .gc-calendar-month-year {
+  color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar table.calendar td .today .day-number {
+  color: #7D2Ae8 !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.prev {
+  background-color: var(--tertiary-color) !important;
+  box-shadow: inset 0px -1px 0px var(--tertiary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.next {
+  background-color: var(--tertiary-color) !important;
+  box-shadow: inset 0px -1px 0px var(--tertiary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar table.calendar a .day-number {
+  color: var(--secondary-color) ;
+}
+[data-theme="dark"] .gc-calendar table.calendar a:hover .day-number {
+  color: var(--tertiary-color) !important;
+}
+
+[data-theme="dark"] .gc-calendar table.calendar td:hover {
+  background: linear-gradient(90deg, var(--tertiary-color) 90%, transparent 50%) !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.prev:hover {
+  -webkit-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+-moz-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7) !important;
+}
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.next:hover {
+  -webkit-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+-moz-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7) !important;
+}
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.prev:focus {
+  -webkit-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+-moz-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7) !important;
+}
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.next:focus {
+  -webkit-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+-moz-box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7);
+box-shadow: 1px 1px 20px -1px rgba(248,249,251,0.7) !important;
+}
+
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.prev {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+  -webkit-box-shadow: -4px 9px 10px -8px rgba(248, 249, 251, 0.7);
+    -moz-box-shadow: -4px 9px 10px -8px rgba(248, 249, 251, 0.7);
+    box-shadow: -4px 9px 10px -8px rgba(248, 249, 251, 0.7) !important ;
+}
+[data-theme="dark"] .gc-calendar .gc-calendar-header button.next {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+    -webkit-box-shadow: 4px 9px 10px -8px rgba(248, 249, 251, 0.7);
+      -moz-box-shadow: 4px 9px 10px -8px rgba(248, 249, 251, 0.7);
+      box-shadow: 4px 9px 10px -8px rgba(248, 249, 251, 0.7) !important;
+}
+
+/* MODALS DARK MODE */
+
+[data-theme="dark"] .modal-header {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .modal-body {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+[data-theme="dark"] .modal-footer {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+/* CALCULATOR PAGE  */
+
+[data-theme="dark"] .form-control {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+[data-theme="dark"] .kwh {
+    background: hsl(218, 11%, 35%) !important;
+    color: var(--secondary-color) !important;
+}
+
+/* TASKIFY PAGE  */
+
+[data-theme="dark"] .container-fluid {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+[data-theme="dark"] .row {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+  /* box-shadow: 0px 0px 15px -14px rgba(255, 255, 255, 1) !important; */
+}
+[data-theme="dark"] #taskStatus {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+[data-theme="dark"] #taskDate {
+  background: var(--tertiary-color) !important;
+  color: var(--secondary-color) !important;
+}
+
+

@@ -82,7 +82,7 @@ totalCost = units * ratePerUnit
 The Taskify page is a simple to-do list website where you can create, delete and edit to-do items with due dates. This feature allows you to keep track of your tasks and stay organized.
 
 ## Conclusion
-In conclusion, ActivityTracker is a comprehensive website that offers several features to help you track your computer activity and usage. Whether you're looking to monitor your time spent on the computer or keep track of your tasks, ActivityTracker has you covered.
+In conclusion, ActivityTracker is a comprehensive website that offers several features to help you track your computer activity and usage. Whether you're looking to monitor your time spent on the computer or keep track of your tasks, ActivityTracker has you covered. Also This started out as a personal project for my personal use. It started out with just a stopwatch, but as I came up with new ideas, I added them. I wasn't expecting to add so many features to this.
 
 
 ## Installation

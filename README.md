@@ -36,6 +36,48 @@ The Calendar page displays a calendar that shows the total computer usage time f
 ### Calculator
 The Calculator page is designed to help you calculate the cost of electricity in rupees, based on the data from the database. You can set a custom watt value and date, and use the slider to determine how many days of data you want to fetch. The data is displayed in a table, with columns for Date, Hours, and Units. The Hour column shows the total hours, while the Unit column shows the equivalent units converted from the total hours using a formula based on the wattage value. The bottom of the page displays the total cost in rupees for the selected choices.
 
+To Calculate consumption from hours i used the following way :
+
+* **First we have to convert hours to kilowatt-hours (kWh) and then to units**
+
+```
+u = (h * pr / 1000) * 1000 / pr
+```
+
+Where:
+
+*u* is the number of units
+
+*h* is the number of hours
+
+*pr* is the power rating of the appliance in watts.
+
+
+For example, to convert 2 hours of usage to units for an appliance with a power rating of 1000 watts:
+
+```
+u = (2 * 1000 / 1000) * 1000 / 1000
+  = 2 * 1
+  = 2
+```
+This means that the appliance has consumed 2 units of electricity.
+
+* **Now to calculate the cost in INR, we can then multiply the number of units by the rate per unit.**
+For example, we take the rate per unit as INR 7.50, then total cost would be:
+```
+totalCost = units * ratePerUnit
+          = 2 * 7.50
+          = INR 15.00
+```
+#### NOTE 
+* The preceding is just an example of the type of formula I used in my code to calculate consumption in INR.
+* The rate per unit is dependant on how many units are consumed, *For example, The SBPDCL charges Rs. 4.22 for the first 100 units, Rs. 5.02 for the next 101-200 units, and Rs. 5.87 for the next 200-300 units for energy*.
+
+* I used the *unit/rupee* values from my Light Bill (MahaVitaran), in my code. You can find yours on the backside of your Light Bill in a Table Format.
+
+* You can modify the *Unit Group* and *Rate of Unit* values in my code to reflect your preferences; they are located at the bottom of `calc.js`, in `/!— CALCULATING AND PRINTING PRICE —>`.I used [if-else ladder](https://www.w3schools.com/js/js_if_else.asp) to calculate and print the final consumption.
+
+
 ### Taskify
 The Taskify page is a simple to-do list website where you can create, delete and edit to-do items with due dates. This feature allows you to keep track of your tasks and stay organized.
 

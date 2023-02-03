@@ -482,8 +482,10 @@ addButton.addEventListener("click", function () {
 
     // let sliceNumber = (num, len) => +String(num).slice(0, len);
 
+        // grouping and comparing with units, according to my light bill values 
     if (total >= 0 && total <= 100) {
 
+        // units * rupees + tax(in rupees)
         let rupees = (total * 3.36) + 0.650;
         priceOutput.innerText = Math.round(rupees);
 
@@ -514,14 +516,6 @@ addButton.addEventListener("click", function () {
 
 });
 
-// const liElements = document.querySelectorAll('li');
-
-// liElements.forEach(li => {
-//     li.addEventListener('click', () => {
-//         const value = li.getAttribute('data-value');
-//         console.log(value);
-//     });
-// });
 
 // CHANGING NAVBAR CLASS
 

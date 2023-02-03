@@ -1,5 +1,5 @@
 # ActivityTracker
-A comprehensive website that allows you to easily track and calculate your computer activity and usage with ease.
+ActivityTracker is an all-in-one time management solution, built with HTML, PHP, CSS, JavaScript and MySQL. With features such as a Stopwatch, Calendar, Calculator, and Taskify, it is the perfect tool for tracking and organizing your daily activities. Keep a record of your computer usage with the Stopwatch, see a visual representation of your usage history with the Calendar, Calculate the electricity cost of your computer with the Calculator, and stay on top of your tasks with the Taskify to-do list. Stay productive and organized with ActivityTracker.
 
 ## References
 While working on this project, I used a few open-source libraries and elements that I found on the internet. The majority of the visual elements in this project are taken from [uiverse](https://uiverse.io). They are listed below:

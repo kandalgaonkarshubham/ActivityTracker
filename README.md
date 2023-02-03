@@ -46,9 +46,9 @@ In conclusion, ActivityTracker is a comprehensive website that offers several fe
 ## Installation
 To use ActivityTracker, you need to have a web server with PHP and MySQL installed(I used XAAMP). Follow these steps to get started:
 
-1. Clone the repository to your local machine:
+1. `Download Zip` or Clone the repository to your local machine:
 ```bash
-  https://github.com/sam19113k/ActivityTracker.git
+  https://github.com/kandalgaonkarshubham/ActivityTracker.git
 ```
 
 2. Create a database in MYSQL with name "activitytracker"(Without the quotes).

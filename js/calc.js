@@ -481,38 +481,33 @@ addButton.addEventListener("click", function () {
     const priceOutput = document.getElementById('price_output');
 
     // let sliceNumber = (num, len) => +String(num).slice(0, len);
-
-        // grouping and comparing with units, according to my light bill values 
+    
+    let rupees;
+    
+    // grouping and comparing with units, according to my light bill values
     if (total >= 0 && total <= 100) {
-
-        // units * rupees + tax(in rupees)
-        let rupees = (total * 3.36) + 0.650;
-        priceOutput.innerText = Math.round(rupees);
+        
+            //  (units * rupees) + tax 
+        rupees = (total * 3.36) + 0.650;
 
     } else if (total >= 101 && total <= 300) {
 
-        let rupees = (total * 7.34) + 1.450;
-        priceOutput.innerText = Math.round(rupees);
-
+        rupees = (total * 7.34) + 1.450;
 
     } else if (total >= 301 && total <= 500) {
 
-        let rupees = (total * 10.37) + 2.050;
-        priceOutput.innerText = Math.round(rupees);
-
+        rupees = (total * 10.37) + 2.050;
 
     } else if (total >= 501 && total <= 1000) {
 
-        let rupees = (total * 11.86) + 2.350;
-        priceOutput.innerText = Math.round(rupees);
-
+        rupees = (total * 11.86) + 2.350;
 
     } else if (total > 1000) {
 
-        let rupees = (total * 11.86) + 2.350;
-        priceOutput.innerText = Math.round(rupees);
-
+        rupees = (total * 11.86) + 2.350;
     }
+    priceOutput.innerText = Math.round(rupees);
+
 
 });
 

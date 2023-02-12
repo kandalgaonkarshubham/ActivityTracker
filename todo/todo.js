@@ -104,6 +104,7 @@ function darkLight() {
                 const paragraphs = document.querySelectorAll('p[data-id]');
                 const infoBtns = document.querySelectorAll('button[id="infoMenu"]');
                 const actionBtns = document.querySelectorAll('button[id="actionsMenu"]');
+                const badgeHolders = document.querySelectorAll('span[data-id^="badge"]');
 
                 // const taskBg = document.querySelector(`p[data-id="task${fetchNum}"]`);
 
@@ -122,6 +123,9 @@ function darkLight() {
                 });
                 actionBtns.forEach(function (actionBtn) {
                     actionBtn.classList.add('d-none');
+                });
+                badgeHolders.forEach(function (badgeHolder) {
+                    badgeHolder.style.display = "none";
                 });
 
                 labelContP.classList.remove('d-none');
@@ -192,7 +196,7 @@ function submitForm() {
 
     // <!-- TASKS FUNCTIONS -->
     
-    const completeBtn = document.getElementById('complete');
+    // const completeBtn = document.getElementById('complete');
     
 
     
@@ -278,66 +282,61 @@ function submitForm() {
 
     // <!-- UNIQUELY IDENTIFYING SECTIONS -->
     
-    
     const compButtons = document.querySelectorAll('input[data-id]');
-    
-    
-    // function getNumber(str) { 
-    //     return str.replace(/id/g, '');
-    // }
 
     function getNumber(str) {
         return str.replace(/id|save|edit|delete/g, '');
     }
 
-    
+
     compButtons.forEach(button => {
         button.addEventListener('click', function () {
 
             idNum = button.getAttribute('data-id');
             fetchNum = getNumber(idNum);
-            
-            if (button.checked) {
-                
-                $.ajax({
-                    url: "submit.php",
-                    type: "POST",
-                    data: {
-                        functionname: "complete",
-                        taskid: fetchNum,
-                    },
-                    success: function (response) {
-                        location.reload();
-                    }
-                });
+
+            setTimeout(function () {
+                if (button.checked) {
+                    
+                    $.ajax({
+                        url: "submit.php",
+                        type: "POST",
+                        data: {
+                            functionname: "complete",
+                            taskid: fetchNum,
+                        },
+                        success: function (response) {
+                            location.reload();
+                        }
+                    });
 
 
-                // button.disabled = true;
-                const taskBg = document.querySelector(`p[data-id="task${fetchNum}"]`);
-                taskBg.style.transition = 'color 1s';
-                taskBg.style.color = '#24c78e';
-                
+                    // button.disabled = true;
+                    const taskBg = document.querySelector(`p[data-id="task${fetchNum}"]`);
+                    taskBg.style.transition = 'color 1s';
+                    taskBg.style.color = '#24c78e';
+                    
 
 
-            } else {
-                
-                $.ajax({
-                    url: "submit.php",
-                    type: "POST",
-                    data: {
-                        functionname: "due",
-                        taskid: fetchNum,
-                    },
-                    success: function (response) {
-                        location.reload();
-                    }
-                });
+                } else {
+                    
+                    $.ajax({
+                        url: "submit.php",
+                        type: "POST",
+                        data: {
+                            functionname: "due",
+                            taskid: fetchNum,
+                        },
+                        success: function (response) {
+                            location.reload();
+                        }
+                    });
 
-            }
+                }
+            }, 500);
 
         });
     });
-
 
     // <!-- EDIT, SAVE & DELETE ACTIONS -->
 
@@ -428,6 +427,8 @@ function submitForm() {
 
         const taskParas = document.querySelectorAll('p[data-id^="task"]');
         const taskDueDates = document.querySelectorAll('i[data-id^="due"]');
+        const badges = document.querySelectorAll('span[data-id^="badge"]');
+
 
         for (let i = 0; i <= maxLimit; i++) {
             const taskPara = taskParas[i];
@@ -437,10 +438,19 @@ function submitForm() {
                 let date2 = new Date(taskDueDate);
                 let difference = (date2 - date1) / (1000 * 60 * 60 * 24);
 
-                if (difference<=0) {
-                    taskPara.setAttribute('style', 'font-weight:400 !important; color:#ED0014 !important;');
-                } else if (difference<=3) {
-                    taskPara.setAttribute('style', 'font-weight:400 !important; color:#FFBF00 !important');
+                const badge = badges[i];
+                const badgeH = badge.parentNode;
+                if (difference <= 0) {
+                    taskPara.setAttribute('style', 'font-weight:500 !important; color:#ED0014 !important;');
+
+                    badgeH.classList.remove("d-none");
+                    badge.classList.add("text-bg-danger");
+
+                } else if (difference <= 3) {
+                    taskPara.setAttribute('style', 'font-weight:500 !important; color:#FFBF00 !important');
+
+                    badgeH.classList.remove("d-none");
+                    badge.classList.add("text-bg-warning");
                 }
             }
         }
@@ -458,6 +468,7 @@ function changeClass() {
     element.classList.toggle("responsiveNavBtn");
     switchElement.classList.toggle("responsiveSwitchBtn");
 }
+    // <!-- Clearing Completed Tasks -->
 
 function clearComp() {
     $.ajax({

@@ -99,7 +99,7 @@ $sortresult = mysqli_query($conn, $sql);
         <div class="row m-1 p-4">
             <div class="col">
                 <div class="p-1 h1 text-Custom text-center mx-auto display-inline-block">
-                    <i class="fa-solid fa-bars-progress todoLogo rounded p-2"></i>
+                    <i class="fa-solid fa-bars-staggered todoLogo rounded p-2"></i>
                     <b>Taskify</b>
                 </div>
             </div>
@@ -166,7 +166,13 @@ $sortresult = mysqli_query($conn, $sql);
                 if (mysqli_num_rows($sortresult) > 0) {
                     while($row = mysqli_fetch_assoc($sortresult)) {
                 ?> 
-                <div class="phpElementsRow row p-4 m-4">
+                <div class="phpElementsRow rounded row p-4 m-4">
+
+                    <div class="badgeHolder d-none">
+                        <span data-id="badge<?php echo $row['id'] ?>" class="badge position-absolute">
+                            <i class="fa fa-hourglass-2"></i><?php echo date("d M Y", strtotime($row['taskenddate'])); ?>
+                        </span>
+                    </div>
 
                     <div class="col-lg-1 col-1 p-0 d-flex align-items-center justify-content-center">
                         <label id="complete" class="checkboxLabel" data-toggle="tooltip" data-placement="bottom" title="Mark as complete">
@@ -179,7 +185,8 @@ $sortresult = mysqli_query($conn, $sql);
                         <p data-id="task<?php echo $row['id'] ?>" class="form-control form-control-md border-0 edit-todo-input bg-transparent rounded px-3"><?php echo $row['taskname'] ?></p>
                     </div>
 
-                    <div class="col-lg-2 col-auto d-flex align-items-center justify-content-lg-end justify-content-center">
+                    
+                    <div style="transform: translateY(-5px)" class="col-lg-2 col-auto d-flex align-items-center justify-content-lg-end justify-content-center">
 
                         <button id="actionsMenu" class="customButton">
                             <div class="icon">
@@ -231,6 +238,7 @@ $sortresult = mysqli_query($conn, $sql);
             </div>
         </div>
 
+                
     </div>
 </main>
     

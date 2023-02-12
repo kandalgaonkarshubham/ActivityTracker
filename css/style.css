@@ -1,4 +1,7 @@
 /* Stopwatch */
+.jumotron {
+    min-height: 90vh;
+}
 
 .wrapper {
     user-select: none;
@@ -112,19 +115,6 @@ button[disabled] {
     --bs-tooltip-bg: #f8f9fb;
 }
 
-#lastitem{
-    visibility: hidden;
-    opacity: 0;
-}
-
-/* Bulb */
-.fa-lightbulb{
-    font-size: 25px;
-    float: right;
-    /* color: red; */
-}
-
-                        /* NAVBAR SETTINGS */
 
 .navbar-toggler {
     padding: unset;
@@ -221,3 +211,41 @@ button[disabled] {
 .accordion-collapse{
     transition: 0.5s;
 }
+
+         /* MISCELLANIOUS */
+
+
+/* Bottom Page Icons */
+
+.fa-lightbulb,.fa-copy {
+    font-size: 20px;
+    float: right;
+    transform: translateY(10px);
+    margin: 2px;
+}
+
+#bulb,.fa-copy {
+    opacity: 0.2;
+    transition: 0.5s;
+}
+
+#bulb:hover,.fa-copy:hover {
+    opacity: 1;
+}
+
+.fa-copy {
+    transform: translateY(11px);
+    color: #7D2Ae8;
+}
+
+
+
+/* 
+#floatingBtn:hover+.circular-menu.items-wrapper {
+    display: block;
+}
+
+.circular-menu.items-wrapper {
+    display: none;
+} 
+*/

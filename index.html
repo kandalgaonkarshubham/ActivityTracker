@@ -121,7 +121,7 @@
 
 
 
-        <div class="jumotron d-flex align-items-center min-vh-100">
+        <div class="jumotron d-flex align-items-center">
             <div class="container">
                 <div class="row">
                     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -160,7 +160,7 @@
                             </div>
                             <div class="buttons">
                                 <button class="lapp" title="Show/Hide Today's Logs">Laps</button>
-                                <button type="button" data-bs-toggle="modal" data-bs-target="#store" class="eod">Store</button>
+                                <button type="button" data-bs-toggle="modal" data-bs-target="#store" class="eod" disabled>Store</button>
                             </div>
 
                         </div>
@@ -170,15 +170,20 @@
             </div>
         </div>
 
-        <!-- <i id="bulb" class="fa-solid fa-lightbulb" data-toggle="tooltip" ></i> -->
-        <i id="bulb" class="fa-solid fa-lightbulb" data-toggle="tooltip" data-placement="top" ondblclick="debugWkLck()"></i><br>
+
+
+        <i id="bulb" class="fa-solid fa-lightbulb" data-toggle="tooltip" data-placement="top" ondblclick="debugWkLck()"></i>
+        <i class="fa-solid fa-copy" data-toggle="tooltip" data-placement="top" title="Copy Discards Page Url to Clipboard"></i><br>
+
+
+
 
     </main>
 
     <footer id="footer" class="d-none">
-        <hr>
         <div class="container">
-            <form action="form2.php" method="post">
+            <form action="form2.php" method="post" style="display: none;">
+                <hr>
                 <fieldset>
                     <legend>Debug Form</legend>
                     <input id="inpdate" class="form-control mb-3" type="text" name="date" placeholder="date">
@@ -190,7 +195,7 @@
                 </fieldset>
             </form>
         </div>
-<hr>
+        <hr>
         <div id="wakelock-container" class="container ">
             <h1 class="text-center">Wakelock Api</h1>
             <p>The button below changes depending on whether wake lock is active or not.</p>

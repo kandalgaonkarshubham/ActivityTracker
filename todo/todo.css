@@ -170,7 +170,7 @@ select::-ms-expand {
     display: block;
     width: inherit;
     height: inherit;
-    border: solid 3px #2a2a2ab7;
+    border: solid 3px gray;
     border-radius: 6px;
     -webkit-transition: all 0.375s;
     transition: all 0.375s;
@@ -563,9 +563,22 @@ select::-ms-expand {
     cursor: pointer;
 }
 
+.phpElementsRow{
+    box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
+}
 
-@media(max-width:768px) {
-    .phpElementsRow{
-        box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .15) !important;
-    }
+ 
+.badgeHolder {
+    position: relative;
+    box-sizing: content-box;
+}
+.badge{
+    max-width: max-content !important;
+    top: 0;
+    right: 0;
+    transform: translate(35%, -160%);
+}
+
+.badge i{
+    padding-right: 5px;
 }

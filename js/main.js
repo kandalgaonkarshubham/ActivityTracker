@@ -28,7 +28,9 @@
         stopBtn.addEventListener("click", stop);
         // resetBtn.addEventListener("click", reset);
 
+        let resumeCount = 0;
         function start() {
+            resumeCount++;
             startBtn.classList.add("active");
             stopBtn.classList.remove("stopActive");
 
@@ -70,7 +72,7 @@
 
             $('a').attr('target', '_blank');
 
-            startTime = new Date().toLocaleTimeString();
+            if (resumeCount==1) {startTime = new Date().toLocaleTimeString();} 
         }
 
         function stop() {
@@ -89,6 +91,8 @@
             stopBtn.classList.remove("stopActive");
             clearInterval(startTimer);
             hr = min = sec = ms = "0" + 0;
+            startTime=0;
+            stopTime=0;
             putValue();
             removeRow();
         }
@@ -457,6 +461,7 @@
 // <!- Checking the browser and Cookie then displaying the lacklist Prompt -->
 
 
+var browserDiscards;
 function checkCookie() {
 
     
@@ -465,21 +470,25 @@ function checkCookie() {
             let browserName;
 
             if (window.navigator.userAgent.indexOf("OPR") > -1 || window.navigator.userAgent.indexOf("Opera") > -1) {
+                browserDiscards = "opera://discards";
                 return browserName = "To Stop Opera from blacklisting the StopWatch Page, Open this tab - <b><i>opera://discards</i></b>";
             }
             else if (navigator.userAgent.indexOf("Edg") != -1) {
+                browserDiscards = "about://discards";
                 return browserName = "To Stop MSEdge from blacklisting the StopWatch Page, Open this tab - <b><i>about://discards</i></b>";
             }
             else if (navigator.userAgent.indexOf("Chrome") != -1) {
+                browserDiscards = "chrome://discards";
                 return browserName = "To Stop Chrome from blacklisting the StopWatch Page, Open this tab - <b><i>chrome://discards</i></b>";
             }
             else if (navigator.userAgent.indexOf("Safari") != -1) {
                 return browserName = "Unfortunately, We do not have any information of Tab Snoozing of Safari. So If you dont want your browser to keep blacklisting the StopWatch Page, open it once in a while";
             }
             else if (navigator.userAgent.indexOf("Firefox") != -1) {
+                browserDiscards = "firefox://discards";
                 return browserName = "WakeLock Api is not Supported in Firefox, To Stop Firefox from blacklisting the StopWatch Page, Open this tab - <b><i>firefox://discards</i></b>";
             }
-            else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10
+            else if ((navigator.userAgent.indexOf("MSIE") != -1) || (!!document.documentMode == true)) //IF IE > 10 
             {
                 return browserName = "WHY ARE YOU USING INTERNET EXPLORER IN 21<sup>st</sup> CENTURY ????????";
             }
@@ -510,7 +519,7 @@ function checkCookie() {
                 alert(`${brname}`, 'primary');
                 
             }
-        }
+}
         
 
         
@@ -548,4 +557,18 @@ function checkCookie() {
 
         element.classList.toggle("responsiveNavBtn");
         switchElement.classList.toggle("responsiveSwitchBtn");
+    }
+
+    // <!- Bottom Page Icons -->
+    
+    const copyBtn = document.querySelector(".fa-copy");
+    copyBtn.addEventListener("click", clipboardCopy);
+    copyBtn.addEventListener("mouseout", colorRevert);
+
+    function clipboardCopy() {
+        copyBtn.style.color = "green";
+        navigator.clipboard.writeText(browserDiscards);
+    }
+    function colorRevert() {
+        copyBtn.style.color = "#7D2Ae8";
     }

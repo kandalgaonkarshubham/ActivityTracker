@@ -7,6 +7,7 @@ While working on this project, I used a few open-source libraries and elements t
 - The Dark Mode Switch is obtained from https://uiverse.io/satyamchaudharydev/shy-earwig-18.
 - The Info/Edit Button is obtained from https://uiverse.io/fanishah/smart-dog-17.
 - The Delete Button is obtained from https://uiverse.io/cssbuttons-io/stupid-impala-51.
+- The Lock-Checkbox is obtained from https://uiverse.io/mobinkakei/strange-frog-14.
 - The Stopwatch (Home Page) was adapted from [CodingLab](https://www.codinglabweb.com/2021/10/Stopwatch-HTML-CSS-JavaScript.html) and modified.
 - The Calendar page is an Open Source Library - [Github](https://github.com/nggepe/calendar-gc).
 - The Taskify page is based on a Bootstrap 4 template obtained from [CodePen](https://codepen.io/paulj05hua/pen/LYGLJYQ), which I later modified to support the latest Bootstrap 5 version and improved the look and feel by changing few things.

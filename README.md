@@ -89,7 +89,7 @@ Also This started out as a personal project for my personal use. It started out 
 
 
 ## Installation
-To use ActivityTracker, you need to have a web server with PHP and MySQL installed(I used XAAMP). Follow these steps to get started:
+To use ActivityTracker, you need to have a web server with PHP and MySQL installed(I used [XAAMP](https://www.apachefriends.org)). Follow these steps to get started:
 
 1. `Download Zip` or Clone the repository to your local machine:
 ```bash

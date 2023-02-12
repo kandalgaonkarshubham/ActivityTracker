@@ -104,6 +104,24 @@ To use ActivityTracker, you need to have a web server with PHP and MySQL install
 
 5. Launch the website by visiting the index.html file in your web browser.
 
+## How To Use
+1. Open the software that you have installed. You have the option of using [Xaamp](https://www.apachefriends.org) or [Wamp](https://www.wampserver.com/en/). It's also fine to use other software as long as it includes an apache and MySQL server.
+
+2. Start both the **Apache** and **MySQL** servers from your software.
+
+3. Open your preferred browser and type `localhost/ActivityTracker` into the address bar, and you're done.
+
+* Now You will see a page like this: ![stopwatch](https://user-images.githubusercontent.com/44568730/218316992-0821c869-08e7-4e57-af5e-04266a469ce8.png)
+
+4. To use the Stopwatch, simply click Start to begin recording your time, which will start the timer, and click Stop to stop the time, then click the Store button to save the time into the database.
+
+5. It is recommended that after loading the Stopwatch page, you open your browser's specific discards page and disable tab snoozing for the stopwatch page, so that the stopwatch will run in the background and the webpage will not be snoozed.The discard page url for your browser can be obtained by either a notification that appears every 6 hours or by clicking the copy icon on the bottom left of the stopwatch page.
+
+* When you open the page in your browser, it will look something like this:![enabled](https://user-images.githubusercontent.com/44568730/218317866-bd205559-7202-4910-a662-4311477a7bfd.png)
+* Then simply look for the name **Stopwatch** in the list and you will see that it is set to True in the *Auto Discardable* column (as you can see in the above picture).
+* Click Toggle, and the tickmark will change to a cross, like this : ![disable](https://user-images.githubusercontent.com/44568730/218318480-bb2c32e0-e525-4661-97d2-574d42d7ff2e.png)
+* That's all there is to it, you'll have to do this every time you reopen your browser.
+
 ## Contribution
 If you're interested in contributing to the development of ActivityTracker, you can do so by submitting a pull request with your changes. All contributions are welcome and appreciated.
 

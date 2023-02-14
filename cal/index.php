@@ -71,7 +71,9 @@ $result = mysqli_query($conn, $sql);
               <a class="nav-link" href="../calc.html">Calculator</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="../todo/index.php">Taskify</a>
+              <a class="nav-link position-relative" href="../todo/index.php">Taskify
+                  <span id="todoBadge" class="badge position-absolute top-0 rounded-pill bg-danger"></span>
+              </a>
             </li>
           </ul>
 
@@ -90,7 +92,9 @@ $result = mysqli_query($conn, $sql);
 
   <div id="calendar" style="padding: 1rem;"></div>
 
-
+<footer class="d-none">
+  <iframe id ="taskifyPage" src="../todo/index.php" height="0" width="0"></iframe>
+</footer>
 
 
 
@@ -282,73 +286,18 @@ $(function (e) {
         element.classList.toggle("responsiveNavBtn");
         switchElement.classList.toggle("responsiveSwitchBtn");
     }
+
+    // Taskify Badge Notification
+
+    document.querySelector('iframe#taskifyPage').addEventListener('load', function () {
+        let dueNoti = sessionStorage.getItem('dueNotifications');
+        if (dueNoti !== null & dueNoti>0) {
+            document.getElementById("todoBadge").innerText = dueNoti;
+        }
+        this.remove();
+    });
   </script>
 
-
-
-
-  <!-- <script>
-    $(function(e) {
-      var calendar = $("#calendar").calendarGC({
-        dayBegin: 0,
-        prevIcon: '&#x3c;', //"&lt;"
-        nextIcon: '&#x3e;', //"&gt;"
-        onPrevMonth: function(e) {
-          console.log("prev");
-          console.log(e)
-        },
-        onNextMonth: function(e) {
-          console.log("next");
-          console.log(e)
-        },
-        events: [
-          // {
-          //   date: new Date("2022-09-26"),
-          //   eventName: "Holiday",
-          //   className: "badge bg-danger",
-          //   onclick(e, data) {
-          //     console.log(data);
-          //   },
-          //   dateColor: "red"
-          // }
-        ],
-        onclickDate: function(e, data) {
-          console.log(e, data);
-        },
-
-      });
-    })
-
-    function fetchEventTimeout() {
-      setTimeout(fetchEvents, 10);
-    }
-
-    function fetchEvents() {
-
-      var calendar = $("#calendar").calendarGC({
-        events: [
-          <?php
-          while ($row = mysqli_fetch_array($result)) {
-          ?> {
-              date: new Date("<?php echo "$row[eventdate]" ?>"),
-              eventName: "<?php echo "$row[eventname]" ?> - <?php echo "$row[eventcount]" ?> Times",
-              className: "<?php echo "$row[eventclass]" ?>",
-              onclick(e, data) {
-                console.log(data);
-              },
-              dateColor: "<?php echo "$row[eventcolor]" ?>"
-            },
-          <?php
-          }
-          ?>
-        ],
-      });
-
-      const prevBtn = document.querySelector(".prev");
-      prevBtn.click();
-      checkViewMode();
-    }
-  </script> -->
 
 </body>
 

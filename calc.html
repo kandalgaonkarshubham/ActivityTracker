@@ -61,7 +61,9 @@
                             <a class="nav-link active" href="#">Calculator</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="todo/index.php">Taskify</a>
+                            <a class="nav-link position-relative" href="todo/index.php">Taskify
+                                <span id="todoBadge" class="badge position-absolute top-0 rounded-pill bg-danger"></span>
+                            </a>
                         </li>
                     </ul>
 
@@ -148,7 +150,9 @@
         </div>
     </main>
 
-    <footer></footer>
+    <footer class="d-none">
+        <iframe id="taskifyPage" src="todo/index.php" height="0" width="0"></iframe>
+    </footer>
 
     <script src="js/dark-mode-switch.js"></script>
     

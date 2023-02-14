@@ -195,6 +195,8 @@ $sortresult = mysqli_query($conn, $sql);
                                 <i data-id="edit<?php echo $row['id'] ?>" class="fa-solid fa-pen-to-square text-info btn mx-2 p-0 icon-shere" data-toggle="tooltip" data-placement="bottom" title="Edit todo"></i>
                                 <i data-id="delete<?php echo $row['id'] ?>" class="fa-solid fa-trash text-danger btn mx-2 p-0 icon-shere" data-toggle="tooltip" data-placement="bottom" title="Delete todo"></i>
                                 <i data-id="due<?php echo $row['id'] ?>" class="fa-solid fa-circle-question text-black-50 btn mx-2 p-0 icon-shere" data-toggle="tooltip" data-placement="bottom" title="Due date <?php echo $row['taskenddate'] ?>" data-value="<?php echo $row['taskenddate'] ?>"></i>
+
+                                <i data-id="push<?php echo $row['id'] ?>" class="d-none fa-solid fa-arrow-up-right-dots text-warning btn mx-2 p-0 icon-shere" data-toggle="tooltip" data-placement="bottom" title="Push Date"></i>
                             </div>
                             <p class="my-1">Options</p>
                         </button>
@@ -257,8 +259,6 @@ $sortresult = mysqli_query($conn, $sql);
             const phpFilter = "<?php echo $_SESSION['filter']; ?>";
             const phpOrder = "<?php echo $_SESSION['order']; ?>";
             const phpSort = "<?php echo $_SESSION['sort']; ?>";
-
-            // console.log(phpFilter,phpOrder,phpSort);
         </script>
         <script src="todo.js"></script>
 </body>

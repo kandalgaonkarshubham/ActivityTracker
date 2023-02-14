@@ -87,6 +87,30 @@ if(isset($_POST['functionname'])) {
         }
     break;
 
+    case 'push':
+
+        $taskid = $_POST['taskid'];
+        $datequery = "SELECT `taskenddate` FROM `tasks` WHERE id=$taskid";
+        $dateresult = mysqli_query($conn, $datequery);
+
+        if ($dateresult) {
+            $row = mysqli_fetch_assoc($dateresult);
+            $duedate = $row['taskenddate'];
+        }
+
+        $changedate = new DateTime($duedate);
+        $changedate->modify("+3 days");
+        $pusheddate = $changedate->format("Y-m-d");
+
+        $pushquery = "UPDATE `tasks` SET `taskenddate`='$pusheddate' WHERE id=$taskid";
+
+        if (mysqli_query($conn, $pushquery)) {
+            echo "Task End Date Pushed by 3 Days";
+        } else {
+            echo mysqli_error($conn);
+        }
+    break;
+
     case 'clear':
 
         $clearquery = "DELETE FROM `tasks` WHERE `taskstatus`='completed'";

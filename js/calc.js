@@ -462,16 +462,12 @@ function calculate() {
     // Calculate the total consumption in KWH
     const totalConsumption = calculateTotalConsumption(hourArray);
 
-    // kWh = totalConsumption * wattage / 1000;
-    // units = kWh * 1000 / wattage;
-    // return units;
-
-    units = (totalConsumption * powerRating / 1000) * 1000 / powerRating;
-    // console.log(units);
+    kWh = totalConsumption * powerRating / 1000;
+    units = kWh * 1000 / powerRating;
     return units;
 
-
 }
+
 
 // <!-- CALCULATING AND PRINTING PRICE -->
 
@@ -480,7 +476,6 @@ addButton.addEventListener("click", function () {
     const total = calculate();
     const priceOutput = document.getElementById('price_output');
 
-    // let sliceNumber = (num, len) => +String(num).slice(0, len);
 
         // grouping and comparing with units, according to my light bill values 
     if (total >= 0 && total <= 100) {
@@ -526,3 +521,13 @@ function changeClass() {
     element.classList.toggle("responsiveNavBtn");
     switchElement.classList.toggle("responsiveSwitchBtn");
 }
+
+// Taskify Badge Notification
+
+document.querySelector('iframe#taskifyPage').addEventListener('load', function () {
+    let dueNoti = sessionStorage.getItem('dueNotifications');
+    if (dueNoti !== null & dueNoti > 0) {
+        document.getElementById("todoBadge").innerText = dueNoti;
+    }
+    this.remove();
+});

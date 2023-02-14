@@ -60,7 +60,9 @@
                             <a class="nav-link" href="calc.html">Calculator</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="todo/index.php">Taskify</a>
+                            <a class="nav-link position-relative" href="todo/index.php">Taskify
+                                <span id="todoBadge" class="badge position-absolute top-0 rounded-pill bg-danger"></span>
+                            </a>
                         </li>
                     </ul>
                         <label class="switch">
@@ -180,7 +182,7 @@
 
     </main>
 
-    <footer id="footer" class="d-none">
+    <footer id="footer" class="dnone">
         <div class="container">
             <form action="form2.php" method="post" style="display: none;">
                 <hr>
@@ -195,7 +197,9 @@
                 </fieldset>
             </form>
         </div>
+
         <hr>
+
         <div id="wakelock-container" class="container ">
             <h1 class="text-center">Wakelock Api</h1>
             <p>The button below changes depending on whether wake lock is active or not.</p>
@@ -226,6 +230,10 @@
 
             </p>
         </div>
+
+        
+        <iframe id ="taskifyPage" src="todo/index.php" height="0" width="0"></iframe>
+        
 
     </footer>
 

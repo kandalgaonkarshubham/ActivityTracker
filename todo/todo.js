@@ -285,7 +285,7 @@ function submitForm() {
     const compButtons = document.querySelectorAll('input[data-id]');
 
     function getNumber(str) {
-        return str.replace(/id|save|edit|delete/g, '');
+        return str.replace(/id|save|edit|delete|push/g, '');
     }
 
 
@@ -338,11 +338,12 @@ function submitForm() {
         });
     });
 
-    // <!-- EDIT, SAVE & DELETE ACTIONS -->
+    // <!-- EDIT, SAVE, DELETE & PUSH ACTIONS -->
 
     const editButtons = document.querySelectorAll('i[data-id^="edit"]');
     const saveButtons = document.querySelectorAll('i[data-id^="save"]');
     const delButtons = document.querySelectorAll('i[data-id^="delete"]');
+    const pushButtons = document.querySelectorAll('i[data-id^="push"]');
 
     editButtons.forEach(button => {
         button.addEventListener('click', function () {
@@ -412,12 +413,33 @@ function submitForm() {
         });
     });
 
+    pushButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            idNum = button.getAttribute('data-id');
+            fetchNum = getNumber(idNum);
+
+            $.ajax({
+                url: "submit.php",
+                type: "POST",
+                data: {
+                    functionname: "push",
+                    taskid: fetchNum,
+                },
+                success: function (response) {
+                    location.reload();
+                }
+            });
+        });
+    });
+
     // <!-- CHANGING COLOUR BY CALCULATING DAYS -->
 
+    let dueRed = 0;
+    let dueYellow = 0;
     const phpElements = document.getElementById('phpElements').innerHTML;
 
     if (phpElements.trim() == "") {
-        // do nothing
+        sessionStorage.removeItem("dueNotifications");
     } else {
 
         const maxLimit = document.getElementById("phpElements").childElementCount;
@@ -425,38 +447,51 @@ function submitForm() {
         let currentDate = new Date();
         let formattedDate = currentDate.toISOString().slice(0, 10);
 
-        const taskParas = document.querySelectorAll('p[data-id^="task"]');
-        const taskDueDates = document.querySelectorAll('i[data-id^="due"]');
-        const badges = document.querySelectorAll('span[data-id^="badge"]');
 
+        const taskParagraphs = document.querySelectorAll('p[data-id^="task"]');
+        const dueDateBadges = document.querySelectorAll('i[data-id^="due"]');
+        const pushDateBadges = document.querySelectorAll('i[data-id^="push"]');
+        const statusBadges = document.querySelectorAll('span[data-id^="badge"]');
 
         for (let i = 0; i <= maxLimit; i++) {
-            const taskPara = taskParas[i];
-            if (taskDueDates[i]) {
-                const taskDueDate = taskDueDates[i].getAttribute("data-value");
-                let date1 = new Date(formattedDate);
-                let date2 = new Date(taskDueDate);
-                let difference = (date2 - date1) / (1000 * 60 * 60 * 24);
+            const taskParagraph = taskParagraphs[i];
+            if (dueDateBadges[i]) {
+                const taskDueDate = new Date(dueDateBadges[i].getAttribute("data-value"));
+                const currentDate = new Date(formattedDate);
+                const difference = (taskDueDate - currentDate) / (1000 * 60 * 60 * 24);
 
-                const badge = badges[i];
-                const badgeH = badge.parentNode;
-                if (difference <= 0) {
-                    taskPara.setAttribute('style', 'font-weight:500 !important; color:#ED0014 !important;');
+                const statusBadge = statusBadges[i];
+                const statusBadgeContainer = statusBadge.parentNode;
 
-                    badgeH.classList.remove("d-none");
-                    badge.classList.add("text-bg-danger");
+                const dueDateBadge = dueDateBadges[i];
+                const pushDateBadge = pushDateBadges[i];
 
-                } else if (difference <= 3) {
-                    taskPara.setAttribute('style', 'font-weight:500 !important; color:#FFBF00 !important');
+                switch (true) {
+                    case difference <= 0:
+                        taskParagraph.setAttribute('style', 'font-weight:500 !important; color:#ED0014 !important;');
+                        statusBadgeContainer.classList.remove("d-none");
+                        statusBadge.classList.add("text-bg-danger");
+                        dueDateBadge.style.display = "none";
+                        pushDateBadge.classList.remove("d-none");
+                        dueRed++;
+                    break;
 
-                    badgeH.classList.remove("d-none");
-                    badge.classList.add("text-bg-warning");
+                    case difference <= 3:
+                        taskParagraph.setAttribute('style', 'font-weight:500 !important; color:#FFBF00 !important');
+                        statusBadgeContainer.classList.remove("d-none");
+                        statusBadge.classList.add("text-bg-warning");
+                        dueDateBadge.style.display = "none";
+                        pushDateBadge.classList.remove("d-none");
+                        dueYellow++;
+                    break;
                 }
+                sessionStorage.setItem("dueNotifications", `${dueRed + dueYellow}`);
+                
             }
         }
 
 
-    }
+    } 
 
 
 // CHANGING NAVBAR CLASS

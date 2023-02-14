@@ -572,3 +572,13 @@ function checkCookie() {
     function colorRevert() {
         copyBtn.style.color = "#7D2Ae8";
     }
+
+    // Taskify Badge Notification
+
+    document.querySelector('iframe#taskifyPage').addEventListener('load', function () {
+        let dueNoti = sessionStorage.getItem('dueNotifications');
+        if (dueNoti !== null & dueNoti>0) {
+            document.getElementById("todoBadge").innerText = dueNoti;
+        }
+        this.remove();
+    });

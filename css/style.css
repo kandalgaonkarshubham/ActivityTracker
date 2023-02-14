@@ -111,6 +111,7 @@ button[disabled] {
     font-weight: 500;
 }
 
+
 .custom-tooltip {
     --bs-tooltip-bg: #f8f9fb;
 }

@@ -20,6 +20,7 @@ ActivityTracker is built with the following technologies:
 - HTML
 - PHP
 - CSS
+- BOOTSTRAP
 - JavaScript
 - JQuery
 - Ajax

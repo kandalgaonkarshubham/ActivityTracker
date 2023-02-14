@@ -122,6 +122,22 @@ To use ActivityTracker, you need to have a web server with PHP and MySQL install
 * Click Toggle, and the tickmark will change to a cross, like this : ![disable](https://user-images.githubusercontent.com/44568730/218318480-bb2c32e0-e525-4661-97d2-574d42d7ff2e.png)
 * That's all there is to it, you'll have to do this every time you reopen your browser.
 
+
+<details>
+
+  <summary>Preview</summary>
+  
+  * Stopwatch![stopwatch](https://user-images.githubusercontent.com/44568730/218665874-c09f086f-d171-43fb-a931-697bdbe68646.png)
+
+  * Calendar![calendar](https://user-images.githubusercontent.com/44568730/218665902-6ae8587e-d361-4a0a-a67f-a183f2d95e69.png)
+  
+  * Calculator![calci](https://user-images.githubusercontent.com/44568730/218665957-ba333c06-a44f-4f00-b61f-60af326b6797.png)
+
+  * Taskify![taskify](https://user-images.githubusercontent.com/44568730/218665994-2e50bd8b-65f9-4bd7-bea6-20b5c882bd41.png)
+
+
+</details>
+
 ## Contribution
 If you're interested in contributing to the development of ActivityTracker, you can do so by submitting a pull request with your changes. All contributions are welcome and appreciated.
 

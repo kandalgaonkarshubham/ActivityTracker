@@ -15,10 +15,7 @@ $result = mysqli_query($conn, $sql);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendar</title>
 
-  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
-
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="./src/calendar-gc.css">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="../css/mode.css">
@@ -30,7 +27,7 @@ $result = mysqli_query($conn, $sql);
   <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
   <link rel="manifest" href="../favicon/site.webmanifest">
 
-  <script src="https://kit.fontawesome.com/cea1d3b9d3.js" crossorigin="anonymous"></script>
+  <script src="../bootstrap/fontawesome-kit.js"></script>
 
 
   <style>
@@ -98,9 +95,9 @@ $result = mysqli_query($conn, $sql);
 
 
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <script src="../bootstrap/jquery-3.6.1.min.js"></script>
   <script src="./dist/calendar-gc.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+  <script src="../bootstrap/js/bootstrap.bundle.js"></script>
   <script src="../js/dark-mode-switch.js"></script>
   <script src="../js/preloader.js"></script>
 

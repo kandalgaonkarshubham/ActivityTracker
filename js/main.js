@@ -563,14 +563,17 @@ function checkCookie() {
     
     const copyBtn = document.querySelector(".fa-copy");
     copyBtn.addEventListener("click", clipboardCopy);
-    copyBtn.addEventListener("mouseout", colorRevert);
-
+    
     function clipboardCopy() {
         copyBtn.style.color = "green";
         navigator.clipboard.writeText(browserDiscards);
+
+        copyBtn.addEventListener("mouseout", colorRevert);
     }
     function colorRevert() {
+        copyBtn.removeEventListener("mouseout", colorRevert);
         copyBtn.style.color = "#7D2Ae8";
+        window.open('','_blank');
     }
 
     // Taskify Badge Notification

@@ -1,6 +1,6 @@
 <?php
 require("../authentication/connect.php");
-// error_reporting(E_ALL ^ E_NOTICE);  
+// error_reporting(E_ALL ^ E_NOTICE);
 session_start();
 
 if (!isset($_SESSION["filter"])) {
@@ -27,11 +27,9 @@ $sortresult = mysqli_query($conn, $sql);
     <title>Taskify</title>
 
     <link rel="stylesheet" href="todo.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
-
-    <!-- <link rel='stylesheet' href='https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'> -->
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-icons.css">
+    <link rel="stylesheet" href="../bootstrap/css/bootstrap-datepicker.min.css">
     
     <link rel="stylesheet" href="../css/mode.css">
     <link rel="stylesheet" href="../css/dark-mode.css">
@@ -42,7 +40,7 @@ $sortresult = mysqli_query($conn, $sql);
     <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
     <link rel="manifest" href="../favicon/site.webmanifest">
     
-    <script src="https://kit.fontawesome.com/cea1d3b9d3.js" crossorigin="anonymous"></script>
+    <script src="../bootstrap/fontawesome-kit.js"></script>
 
 
 </head>
@@ -246,14 +244,11 @@ $sortresult = mysqli_query($conn, $sql);
     
         <footer></footer>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
-        <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+        <script src="../bootstrap/js/bootstrap.bundle.js"></script>
+        <script src="../bootstrap/jquery-3.6.1.min.js"></script>
         <script src="../js/dark-mode-switch.js"></script>
         <script src="../js/preloader.js"></script>
-        
-        
-        <!-- <script src='https://stackpath.bootstrapcdn.com/bootlint/1.1.0/bootlint.min.js'></script> -->
-        <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js'></script>
+        <script src='../bootstrap/js/bootstrap-datepicker.min.js'></script>
 
         <script>
             const phpFilter = "<?php echo $_SESSION['filter']; ?>";

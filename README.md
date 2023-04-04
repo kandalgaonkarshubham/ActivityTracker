@@ -12,7 +12,8 @@ While working on this project, I used a few open-source libraries and elements t
 - The Calendar page is an Open Source Library - [Github](https://github.com/nggepe/calendar-gc).
 - The Taskify page is based on a Bootstrap 4 template obtained from [CodePen](https://codepen.io/paulj05hua/pen/LYGLJYQ), which I later modified to support the latest Bootstrap 5 version and improved the look and feel by changing few things.
 - I used [HackTimer.js](https://github.com/turuslan/HackTimer) to Avoid timers throttling by browser when tab is inactive.
-- In the Stopwatch Page, I used the [Screen Wake Lock API](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock), which is an experimental technology that prevents device screens from dimming or locking when an application needs to run. Sometimes it doesn't work, thats why on the Homepage you will get notification every 6 hour to open your respective browser's discard page to disable the Stopwatch page's to snooze.
+- In the Stopwatch Page, I used the [Screen Wake Lock API](https://developer.mozilla.org/en-US/docs/Web/API/WakeLock), which is an experimental technology that prevents device screens from dimming or locking when an application needs to run.
+- To prevent your browser from closing the Stopwatch page while it is running in the background, you will receive a notification every 6 hours on the Homepage to open your respective browser's discard page and deselect the Stopwatch page from the snooze list.
 More information about the discards page can be found on [Mozilla's Docs](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/tabs/discard),[Chrome Auto Discarding](https://stackoverflow.com/questions/49172240/chrome-auto-tab-discarding-disable-java-script) and [Auto Discarding Solution](https://stackoverflow.com/questions/48992045/how-to-disable-automatic-tab-discarding-on-chrome-debian).
 
 ## Technologies Used
